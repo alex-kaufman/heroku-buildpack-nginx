@@ -2,12 +2,15 @@
 
 set -e
 
-echo 'trying to buold nginx'
-bash scripts/build_nginx $*
-echo 'built nginx'
+
 
 
 mkdir -p "$1/bin/"
+
+echo 'trying to build nginx'
+bash scripts/build_nginx $*
+echo 'built nginx'
+
 cp "bin/nginx-$STACK" "$1/bin/nginx"
 nginx_version=$(./bin/nginx-$STACK -V 2>&1 | head -1 | awk '{ print $NF }')
 echo "-----> nginx-buildpack: Installed ${nginx_version} to app/bin"
