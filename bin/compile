@@ -3,7 +3,7 @@
 set -e
 
 echo 'trying to buold nginx'
-bash ../scripts/build_nginx
+bash scripts/build_nginx
 echo 'built nginx'
 
 
