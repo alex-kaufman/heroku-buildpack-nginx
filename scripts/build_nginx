@@ -19,6 +19,10 @@ headers_more_nginx_module_url=https://github.com/openresty/headers-more-nginx-mo
 
 temp_dir=$(mktemp -d /tmp/nginx.XXXXXXXXXX)
 
+# echo "Serving files from /tmp on $PORT"
+# cd /tmp
+# python -m SimpleHTTPServer $PORT &
+
 cd $temp_dir
 echo "Temp dir: $temp_dir"
 
@@ -41,6 +45,4 @@ echo "Downloading $headers_more_nginx_module_url"
 	make install
 )
 
-echo $(ls $tempdir)
-
-cp $temp_dir/nginx/sbin/nginx $1/bin/nginx
+cp /tmp/nginx/sbin/nginx $1
